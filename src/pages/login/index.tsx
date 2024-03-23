@@ -1,33 +1,39 @@
 import { userApi } from '@/api/auth/api'
-import { TUser } from '@/api/auth/interface'
-import Button from '@/components/button'
+import { TLogin, TUser } from '@/api/auth/interface'
 import Input from '@/components/input'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import tw from 'twin.macro'
 import Image from 'next/image'
+import { Button } from '@nextui-org/react'
 
-export default function signUp() {
+export default function Login() {
   const { register, handleSubmit } = useForm<{
     name: string
     email: string
     password: string
-    confirmPassword: string
   }>({
-    defaultValues: { name: '', email: '', password: '', confirmPassword: '' },
+    defaultValues: { name: '', email: '', password: '' },
   })
-
   const route = useRouter()
 
-  const handleFormSubmit = async (data: TUser) => {
+  const handleFormSubmit = async (data: TLogin) => {
     try {
-      await userApi.postUsers(data)
-      route.push('/login')
+      const response = await userApi.getUsers()
+      const user = response.find(user => {
+        return user.email === data.email && user.password === data.password
+      })
+      if (user) {
+        console.log('login successfully')
+      } else {
+        console.log('login error')
+      }
     } catch (err) {
       console.log('error', err)
     }
   }
+
   return (
     <div tw="flex p-4 items-center justify-center w-screen h-screen">
       <div tw="flex container flex-col gap-4 ">
@@ -58,25 +64,7 @@ export default function signUp() {
               placeholder="Enter Your Password"
               tw="w-[30vw]"
             />
-            <Input
-              register={register}
-              name="confirmPassword"
-              label="confirmPassword"
-              placeholder="Enter Your Confirm Password"
-              tw="w-[30vw]"
-            />
-            <div
-              style={{
-                width: 'full',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Link href="/login">
-                <button type="submit">Sign In</button>
-              </Link>
-              <Link href="/reset-email">forget password</Link>
-            </div>
+            <button type="submit">Sign In</button>
           </form>
         </div>
       </div>

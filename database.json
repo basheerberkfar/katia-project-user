@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "",
+      "email": "",
+      "password": "",
+      "confirmPassword": ""
+    },
+    {
+      "name": "katia",
+      "email": "katia.alhag@hotmail.co.uk",
+      "password": "Password@123",
+      "confirmPassword": "Password@123",
+      "id": "2"
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "confirmPassword": "",
+      "id": "3"
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "confirmPassword": "",
+      "id": "4"
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "confirmPassword": "",
+      "id": "5"
+    },
+    {
+      "id": "be03",
+      "name": "",
+      "email": "",
+      "password": "",
+      "confirmPassword": ""
+    },
+    {
+      "id": "5f98",
+      "name": "",
+      "email": "",
+      "password": "",
+      "confirmPassword": ""
+    },
+    {
+      "id": "7096",
+      "name": "",
+      "email": "",
+      "password": "",
+      "confirmPassword": ""
+    }
+  ]
+}

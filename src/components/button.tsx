@@ -12,11 +12,7 @@ const Button = ({
   ...rest
 }: TButton & React.ComponentPropsWithoutRef<'button'>) => {
   return (
-    <button
-      tw="border-2 p-2 bg-black text-white rounded-md"
-      type={type}
-      {...rest}
-    >
+    <button type={type} {...rest}>
       {label}
     </button>
   )

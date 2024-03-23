@@ -1,5 +1,5 @@
 import { userApi } from '@/api/auth/api'
-import { TUser } from '@/api/auth/interface'
+import { TEmail, TLogin, TUser } from '@/api/auth/interface'
 import Button from '@/components/button'
 import Input from '@/components/input'
 import Link from 'next/link'
@@ -8,22 +8,28 @@ import { useForm } from 'react-hook-form'
 import tw from 'twin.macro'
 import Image from 'next/image'
 
-export default function signUp() {
+export default function Login() {
   const { register, handleSubmit } = useForm<{
     name: string
     email: string
     password: string
-    confirmPassword: string
   }>({
-    defaultValues: { name: '', email: '', password: '', confirmPassword: '' },
+    defaultValues: { name: '', email: '', password: '' },
   })
 
   const route = useRouter()
 
-  const handleFormSubmit = async (data: TUser) => {
+  const handleFormSubmit = async (data: TEmail) => {
     try {
-      await userApi.postUsers(data)
-      route.push('/login')
+      const response = await userApi.getUsers()
+      const emailExists = response.find(
+        (user: TEmail) => user.email === data.email,
+      )
+      if (emailExists) {
+        route.push(`/reset-password/${data.email}`)
+      } else {
+        console.log('Email not found')
+      }
     } catch (err) {
       console.log('error', err)
     }
@@ -39,44 +45,16 @@ export default function signUp() {
           >
             <Input
               register={register}
-              name="name"
-              label="Name"
-              placeholder="Enter Your Name"
-              tw="w-[30vw]"
-            />
-            <Input
-              register={register}
               name="email"
               label="Email"
               placeholder="Enter Your Email"
               tw="w-[30vw]"
             />
-            <Input
-              register={register}
-              name="password"
-              label="Password"
-              placeholder="Enter Your Password"
-              tw="w-[30vw]"
-            />
-            <Input
-              register={register}
-              name="confirmPassword"
-              label="confirmPassword"
-              placeholder="Enter Your Confirm Password"
-              tw="w-[30vw]"
-            />
-            <div
-              style={{
-                width: 'full',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Link href="/login">
-                <button type="submit">Sign In</button>
-              </Link>
-              <Link href="/reset-email">forget password</Link>
-            </div>
+
+            <button type="submit">Sign In</button>
+            <Link href="/login">
+              <button type="submit">back to login </button>
+            </Link>
           </form>
         </div>
       </div>
