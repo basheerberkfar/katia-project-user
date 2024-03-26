@@ -29,12 +29,12 @@ export default function signUp() {
     }
   }
   return (
-    <div tw="flex p-4 items-center justify-center w-screen h-screen">
+    <div tw="flex items-center justify-center">
       <div tw="flex container flex-col gap-4 ">
-        <h4 tw="font-bold text-3xl text-center mb-4">Sign Up To Account</h4>
-        <div>
+        <h4 tw="font-bold text-3xl text-center mb-4 ">Sign Up To Account</h4>
+        <div tw="lg:px-40 px-10  flex justify-center">
           <form
-            tw="h-full w-full gap-3 flex flex-col justify-center items-center w-[100%]"
+            tw="gap-3 flex flex-col items-center w-full"
             onSubmit={handleSubmit(handleFormSubmit)}
           >
             <Input
@@ -42,50 +42,54 @@ export default function signUp() {
               name="name"
               label="Name"
               placeholder="Enter Your Name"
-              tw="w-[30vw]"
+              tw="w-full"
             />
             <Input
               register={register}
               name="email"
               label="Email"
               placeholder="Enter Your Email"
-              tw="w-[30vw]"
+              // tw="w-[30vw]"
             />
             <Input
               register={register}
               name="password"
               label="Password"
               placeholder="Enter Your Password"
-              tw="w-[30vw]"
+              // tw="w-[30vw]"
             />
             <Input
               register={register}
               name="confirmPassword"
               label="confirmPassword"
               placeholder="Enter Your Confirm Password"
-              tw="w-[30vw]"
+              // tw="w-[30vw]"
             />
             <div
               style={{
-                width: 'full',
+                width: '100%',
                 display: 'flex',
                 justifyContent: 'space-between',
               }}
             >
-              <Link href="/login">
-                <button type="submit">Sign In</button>
-              </Link>
+              {/* <Link href="/login"> */}
+              <button style={{ background: '#f00' }} type="submit">
+                Sign In
+              </button>
+              {/* </Link> */}
               <Link href="/reset-email">forget password</Link>
             </div>
           </form>
         </div>
       </div>
-      <div>
+      <div tw="md:block hidden relative w-full h-screen">
         <Image
-          src={require('@/pages/images/auth.jpg')}
-          style={{ width: '100%', height: '100vh' }}
+          fill
+          src="/images/auth.jpg"
+          // style={{ width: '100%', height: '100vh' }}
           alt=""
         />
+        <p tw="absolute left-[50%] top-[90%] bg-red-400">sadsadsds</p>
       </div>
     </div>
   )

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
-    "start": "json-server --watch database.json --port 8000"
+    "start": "next start",
+    "json-start": "json-server --watch database.json --port 8000"
   },
   "babelMacros": {
     "twin": {

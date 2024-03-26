@@ -17,7 +17,7 @@ const Input = <T extends FieldValues>({
   ...rest
 }: IInput<T> & React.ComponentPropsWithoutRef<'input'>) => {
   return (
-    <div tw="grid">
+    <div tw="grid w-full">
       <label htmlFor="input">{label}</label>
       <input
         tw="p-2 border-2 rounded-md outline-0 text-sm"

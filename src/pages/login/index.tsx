@@ -35,7 +35,7 @@ export default function Login() {
   }
 
   return (
-    <div tw="flex p-4 items-center justify-center w-screen h-screen">
+    <div tw="flex items-center justify-center w-screen h-screen">
       <div tw="flex container flex-col gap-4 ">
         <h4 tw="font-bold text-3xl text-center mb-4">Sign Up To Account</h4>
         <div>
@@ -68,10 +68,11 @@ export default function Login() {
           </form>
         </div>
       </div>
-      <div>
+      <div tw="relative w-full h-[100%]">
         <Image
-          src={require('@/pages/images/auth.jpg')}
-          style={{ width: '100%', height: '100vh' }}
+          src="/images/auth.jpg"
+          fill
+          // style={{ width: '100%', height: '100vh' }}
           alt=""
         />
       </div>
